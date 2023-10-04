@@ -1,0 +1,36 @@
+<form #todoForm="ngForm" >
+  <div class="row" *ngIf="localData.length == 0">
+    <div class="col-6">
+    <input type="text" class="form-control" name="name" [(ngModel)]="name" placeholder="Name" required/>
+    </div>
+    <div class="col-6">
+    <input type="taskName" class="form-control" name="taskName" [(ngModel)]="taskName" placeholder="Task Name" required/>
+
+    </div>
+    <div class="col-6" style="display:none">
+        <input type="taskName" class="form-control" name="status" [(ngModel)]="status" placeholder="status" />
+    
+        </div>
+  </div>
+  <br/>
+  <div *ngIf="localData.length>0">
+    <div class="row" *ngFor="let item of localData;let i = index" style="margin: 10px;">
+      <div class="col-6">
+        <input type="text" class="form-control" [name]="'name_' + i" [(ngModel)]="item.name" placeholder="Name" required/>
+        </div>
+        <div class="col-6">
+        <input type="taskName" class="form-control" [name]="'taskName_' + i" [(ngModel)]="item.taskName" placeholder="Task Name" required/>
+    
+        </div>
+        <div class="col-6" style="display:none">
+            <input type="taskName" class="form-control" [name]="'status_i'  + i" [(ngModel)]="status" placeholder="status" />
+        
+            </div>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="btn btn-primary" (click)="onSubmit(todoForm)">Submit</button>
+  </div>
+
+</form>
